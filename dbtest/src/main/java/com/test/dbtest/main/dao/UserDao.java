@@ -1,7 +1,10 @@
 package com.test.dbtest.main.dao;
 
+import com.test.dbtest.main.entity.Problem;
 import com.test.dbtest.main.entity.User;
 import org.apache.ibatis.annotations.*;
+
+import java.util.List;
 
 @Mapper
 public interface UserDao {
@@ -14,4 +17,6 @@ public interface UserDao {
     @Select("SELECT userid FROM user WHERE userid = #{userid}")
     public String findId(@Param("userid")String userid);
 
+    @Select("SELECT * FROM problem")
+    List<Problem> getTitle();
 }

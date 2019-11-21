@@ -1,9 +1,12 @@
 package com.test.dbtest.main.service;
 
 import com.test.dbtest.main.dao.UserDao;
+import com.test.dbtest.main.entity.Problem;
 import com.test.dbtest.main.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
@@ -26,4 +29,7 @@ public class UserService {
         return userDao.findId(userid);
     }
 
+    public List<Problem> AllProblem(){
+        return userDao.getTitle();
+    }
 }

@@ -1,15 +1,19 @@
 package com.test.dbtest.main.controller;
 
-import com.test.dbtest.main.dao.UserDao;
+import com.test.dbtest.main.entity.Problem;
+import com.test.dbtest.main.entity.User;
 import com.test.dbtest.main.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -22,13 +26,17 @@ public class UserController {
         return "userLogin";
     }
 
-    @RequestMapping(value = "/userLogin")
-    public String login(@RequestParam("userid")String userid, @RequestParam("password")String password, HttpServletRequest request){
+    @PostMapping(value = "/userLogin")
+    public ModelAndView login(@RequestParam("userid")String userid, @RequestParam("password")String password, HttpSession session){
         String name = userService.login(userid, password);
+        ModelAndView index = new ModelAndView();
         if(name != null){
-            return "index";
+            index.setViewName("redirect:/user/index");
+            index.addObject("username", name);
+            session.setAttribute("username", name);
+            return index;
         }
-        else return "loginError";
+        else return  new ModelAndView("loginError");
     }
 
     @RequestMapping(value = {"/registerpage"})
@@ -38,18 +46,29 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(value = "/register")
-    public String register(@RequestParam("userid") String userid, @RequestParam("username") String username, @RequestParam("password") String password){
+    public ModelAndView register(HttpSession session, @RequestParam("userid") String userid, @RequestParam("username") String username, @RequestParam("password") String password){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/user/registerpage");
         if(userService.findId(userid) != null){
-            return "账户已存在！";
+            session.setAttribute("message", "账户已存在！");
         }
         else{
             userService.register(userid, username, password);
-            return "注册成功！";
+            session.setAttribute("message", "注册成功！");
         }
+        return modelAndView;
     }
 
-    @RequestMapping(value = "/twosum")
-    public String twosum(){
-        return "twosum";
+    @RequestMapping(value = "/titlepage")
+    public String title(){
+        return "title";
+    }
+
+    @RequestMapping(value = "/index")
+    public String index(Model model){
+        List<Problem> problems = new ArrayList<>();
+        problems = userService.AllProblem();
+        model.addAttribute("titles", problems);
+        return "index";
     }
 }
