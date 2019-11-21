@@ -4,7 +4,7 @@ html {
     /* Google fonts 输出的 CSS */
     font-family: 'Open Sans', sans-serif; 
     background-color: rgb(255, 255, 255);
-    background-image: url(../images/waves-01.jpg);
+    background-image: url(waves-01.jpg);
     background-repeat: repeat;
     /* background-size: contain; */
   }

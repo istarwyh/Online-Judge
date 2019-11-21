@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>登录成功</title>
@@ -9,26 +9,17 @@
 <body>
     <header>
         <h1>Online Judge</h1>
+        <div align="right">用户名: <label th:text="${session.username}"></label></div>
     </header>
 
     
     <main>
         <article>
-            
             <h2>题目列表</h2>
             <div class="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>#</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><i>Titie</i></strong></div>
             <ol>
-                <li><h3><a href="/user/twosum"> 两数整除问题 </a></h3></li>
-                <li><h3>两数之和   </h3></li>
-                <li><h3>将来的日期   </h3></li>
-                <li><h3>最大水容量 </h3></li>
-                <li><h3>买卖股票的最佳时机 </h3></li>
-                <li><h3>求众数 </h3></li>
-                <li><h3>递增三元子序列   </h3></li>
-                <li><h3>调整数组顺序使奇数位于偶数前面  </h3></li>
-                <li><h3>求众数2     </h3></li>
+                <li th:each="problem : ${titles}"><h3><a href="/user/titlepage" th:text="${problem.title}"> </a></h3></li>
             </ol>
-            
         </article> 
     
     </main>

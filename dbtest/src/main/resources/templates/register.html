@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>注册</title>
@@ -14,19 +14,19 @@
     </header>
 
     <main>
-        <article class="css-3">
+        <article class=".css-3">
             <form action="/user/register" method="post">
-            <p></br>
-                <strong>用户名: </strong><input type="text" name="userid" /></br>
+            </br>
+                <strong>用户名: </strong><input type="text" name="userid" /><label th:text="${session.message}"></label></br>
             </br>
                 <strong>昵&nbsp;&nbsp;&nbsp;&nbsp;称: </strong><input type="text" name="username" /></br>
             </br>
-                <strong>密&nbsp;&nbsp;&nbsp;&nbsp;码: </strong><input type="password" name="password" /></br></p>
+                <strong>密&nbsp;&nbsp;&nbsp;&nbsp;码: </strong><input type="password" name="password" /></br>
                 <input type="submit" class="css-1" value="注册">
             
             </form>
             <p></br></p>
-        </article> 
+        </article1> 
     </main>
 
     <div class="foot"></div>
