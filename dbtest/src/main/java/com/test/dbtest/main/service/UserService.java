@@ -32,4 +32,8 @@ public class UserService {
     public List<Problem> AllProblem(){
         return userDao.getTitle();
     }
+    public List<Problem> ProblemContext(int id){
+        return userDao.getContext(id);
+    }
+
 }

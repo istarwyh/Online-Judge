@@ -1,5 +1,6 @@
 package com.test.dbtest.main.controller;
 
+import com.sun.media.jfxmedia.logging.Logger;
 import com.test.dbtest.main.entity.Problem;
 import com.test.dbtest.main.entity.User;
 import com.test.dbtest.main.service.UserService;
@@ -26,7 +27,7 @@ public class UserController {
         return "userLogin";
     }
 
-    @PostMapping(value = "/userLogin")
+    @RequestMapping(value = "/userLogin")
     public ModelAndView login(@RequestParam("userid")String userid, @RequestParam("password")String password, HttpSession session){
         String name = userService.login(userid, password);
         ModelAndView index = new ModelAndView();
@@ -59,9 +60,21 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/titlepage")
-    public String title(){
-        return "title";
+    @RequestMapping(value = "/contextPage/{problemId}")
+    public String title(Model model,
+    /*@RequestParam(value="problemid")Integer problemid*/
+    @PathVariable(value = "problemId",required = true)Integer problemid
+    ){
+        List<Problem> context = new ArrayList<>();
+        problemid++;
+        context = userService.ProblemContext(problemid);
+        model.addAttribute("context", context);
+
+//        ModelAndView title = new ModelAndView();
+//        title.addObject("id", context);
+
+        return "context";
+
     }
 
     @RequestMapping(value = "/index")

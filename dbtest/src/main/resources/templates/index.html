@@ -18,7 +18,8 @@
             <h2>题目列表</h2>
             <div class="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>#</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><i>Titie</i></strong></div>
             <ol>
-                <li th:each="problem : ${titles}"><h3><a href="/user/titlepage" th:text="${problem.title}"> </a></h3></li>
+<!--                <li th:each="problem,problemStat : ${titles}"><h3><a href="/user/contextPage" th:text="${problem.title}" > </a></h3></li>-->
+                <li th:each="problem,problemStat : ${titles}"><h3><a th:href="@{/user/contextPage/{type}(type=${problemStat.index})}" th:text="${problem.title}" > </a></h3></li>
             </ol>
         </article> 
     
