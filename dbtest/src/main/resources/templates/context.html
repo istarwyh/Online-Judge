@@ -1,0 +1,32 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>题目内容</title>
+    <link href="../../static/style.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.font.im/css?family=Open+Sans" rel="stylesheet" type="text/css">
+
+</head>
+
+<form method="POST" action="/user/context">
+<body>
+<header>
+    <h1>题目名称：</h1>
+</header>
+<main>
+    <h2>题目描述：</h2>
+    <ol>
+        <li th:text="${context}"><h3></h3></li>
+    </ol>
+    <textarea type="text" name="answer"></textarea>
+    <br>
+    <button type="submit">提交</button>
+</main>
+
+<div class="foot"></div>
+<footer> <!-- 本站所有网页的统一页脚 -->
+    <p>© JAVA 组保留所有权利</p>
+</footer>
+
+</body>
+</form>
+</html>

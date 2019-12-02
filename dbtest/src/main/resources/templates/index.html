@@ -9,7 +9,7 @@
 <body>
     <header>
         <h1>Online Judge</h1>
-        <div align="right">用户名: <label th:text="${session.username}"></label></div>
+        <div align="right">用户名: <label th:text="${username}"></label></div>
     </header>
 
     
@@ -19,7 +19,7 @@
             <div class="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>#</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><i>Titie</i></strong></div>
             <ol>
 <!--                <li th:each="problem,problemStat : ${titles}"><h3><a href="/user/contextPage" th:text="${problem.title}" > </a></h3></li>-->
-                <li th:each="problem,problemStat : ${titles}"><h3><a th:href="@{/user/contextPage/{type}(type=${problemStat.index})}" th:text="${problem.title}" > </a></h3></li>
+                <li th:each="problem : ${titles}"><h3><a th:href="@{'/user/contextPage/'+${problem.id}}" th:text="${problem.title}"> </a></h3></li>
             </ol>
         </article> 
     

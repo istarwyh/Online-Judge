@@ -21,7 +21,7 @@ public interface UserDao {
     List<Problem> getTitle();
 
 //    @Select("SELECT * FROM problem")
-    @Select("SELECT * FROM problem WHERE ID = #{id}")
-    List<Problem> getContext(int id);
+    @Select("SELECT context FROM problem WHERE id = #{id}")
+    String getContext(@Param("id")int id);
 //    List<Problem> getContext(/*@Param("id")int id*/);
 }
