@@ -30,32 +30,39 @@ public class UserController {
 
     @RequestMapping("/")
     public String show() {
-        return "userLogin";
+//        return "userLogin";
+        return "login";
     }
 
+
+//    public ModelAndView login(@RequestParam("userid")String userid, @RequestParam("password")String password, HttpSession session){
     @RequestMapping(value = "/userLogin")
     public ModelAndView login(@RequestParam("userid")String userid, @RequestParam("password")String password, HttpSession session){
         String name = userService.login(userid, password);
-        ModelAndView index = new ModelAndView();
+        ModelAndView list = new ModelAndView();
         if(name != null){
-            index.setViewName("redirect:/user/index");
-            index.addObject("username", name);
+            list.setViewName("redirect:/user/list");
+            list.addObject("username", name);
             session.setAttribute("username", name);
-            return index;
+            return list;
         }
         else return  new ModelAndView("loginError");
     }
 
-    @RequestMapping(value = {"/registerpage"})
+//    @RequestMapping(value = {"/registerpage"})
+//    public String registerpage(){
+//        return "register";
+//    }
+    @RequestMapping(value = {"/signup"})
     public String registerpage(){
-        return "register";
+        return "sign-up";
     }
 
     @ResponseBody
     @RequestMapping(value = "/register")
     public ModelAndView register(HttpSession session, @RequestParam("userid") String userid, @RequestParam("username") String username, @RequestParam("password") String password){
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/user/registerpage");
+        modelAndView.setViewName("redirect:/user/");
         if(userService.findId(userid) != null){
             session.setAttribute("message", "账户已存在！");
         }
@@ -66,13 +73,13 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/index")
+    @RequestMapping(value = "/list")
     public String index(Model model, @RequestParam("username") String username){
         List<Problem> problems = new ArrayList<>();
         problems = userService.AllProblem();
         model.addAttribute("titles", problems);
         model.addAttribute("username", username);
-        return "index";
+        return "list";
     }
 
     @RequestMapping(value = "/contextPage/{problemId}")

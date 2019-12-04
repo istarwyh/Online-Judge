@@ -1,6 +1,6 @@
 package com.test.dbtest.main.service;
 
-import com.sun.tools.jdeprscan.scan.Scan;
+
 import com.test.dbtest.main.dao.UserDao;
 import com.test.dbtest.main.entity.Problem;
 import com.test.dbtest.main.entity.User;
