@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录成功</title>
+    <link href="../static/style.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.font.im/css?family=Open+Sans" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <header>
+        <h1>Online Judge</h1>
+        <div align="right">用户名: <label th:text="${username}"></label></div>
+    </header>
+
+    
+    <main>
+        <article>
+            <h2>题目列表</h2>
+            <div class="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>#</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><i>Titie</i></strong></div>
+            <ol>
+<!--                <li th:each="problem,problemStat : ${titles}"><h3><a href="/user/contextPage" th:text="${problem.title}" > </a></h3></li>-->
+                <li th:each="problem : ${titles}"><h3><a th:href="@{'/user/contextPage/'+${problem.id}}" th:text="${problem.title}"> </a></h3></li>
+            </ol>
+        </article> 
+    
+    </main>
+  
+
+    <div class="foot"></div>
+    <footer> <!-- 本站所有网页的统一页脚 -->
+        <p>© JAVA 组保留所有权利</p>
+    </footer>
+</body>
+</html>

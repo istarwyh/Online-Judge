@@ -1,6 +1,7 @@
 package com.test.dbtest.main.entity;
 
 public class Result {
+    private int judgeid;
     private int problemid;
     private String userid;
     private int time;

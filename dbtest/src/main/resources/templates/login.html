@@ -127,7 +127,8 @@
 <!--    </script>-->
     <script th:inline="javascript">
         var message = [[${session.message}]];
-        alert(message);
+        if (message!=null)
+            alert(message);
     </script>
 </body>
 </html>
