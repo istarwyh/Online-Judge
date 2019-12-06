@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>题目列表</title>
+
+    <link rel='stylesheet' href='../static/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='../static/css/all.min.css'>
+    <link rel="stylesheet" href="../static/css/style.css">
+
+</head>
+<body>
+
+<section class="pt-80 pb-70">
+    <div class="text-center mb-60 position-relative">
+        <h2 class="font__family-montserrat font__weight-light text-uppercase font__size-18 text-blue brk-library-rendered"
+            data-brk-library="component__title">题目列表</h2>
+
+
+        <hr class="divider wow zoomIn brk-library-rendered" data-brk-library="component__title"
+            style="visibility: visible; animation-name: zoomIn;">
+    </div>
+    <div class="container">
+        <div class="panel__wrapper-icon mb-100 brk-library-rendered" data-brk-library="component__panel">
+            <div class="panel__head all-light">
+                <h3 class="font__family-montserrat font__weight-medium font__size-21">难度</h3>
+                <h3 class="font__family-montserrat font__weight-medium font__size-21" style="padding-left:20px">
+                    题目名称</h3>
+            </div>
+            <ul class="panel__list">
+                <li th:each="problem : ${problems}">
+                    <div th:if="${problem.difficulty} eq 1">
+                        <span class="line"></span>
+                        <i class="icon fab fa-gg"></i>
+                        <h3><a th:href="@{'/user/contextPage/'+${problem.id}}"
+                               th:text="${problem.id}+、+${problem.title}"> </a></h3>
+                    </div>
+                    <div th:if="${problem.difficulty} eq 2">
+                        <span class="line"></span>
+                        <i class="icon far fa-gem"></i>
+                        <h3><a th:href="@{'/user/contextPage/'+${problem.id}}"
+                               th:text="${problem.id}+、+${problem.title}"> </a></h3>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-5">
+                <div class="text-center text-lg-left">
+                    <ul class="list-inline-4 mb-35 brk-library-rendered" data-brk-library="component__list">
+                        <li class="font__family-montserrat font__size-16">
+                            <span class="before"></span><a href="#">刷题指南 <i class="icon fa fa-angle-right"></i></a><span
+                                class="after"></span>
+                        </li>
+                        <li class="font__family-montserrat font__size-16">
+                            <span class="before"></span>社区 <i class="icon fa fa-angle-right"></i><span
+                                class="after"></span>
+                        </li>
+                        <li class="font__family-montserrat font__size-16">
+                            <span class="before"></span>刷题统计<i class="icon fa fa-angle-right"></i><span
+                                class="after"></span>
+                        </li>
+                    </ul>
+                    <p class="brk-dark-font-color font__size-16 font__weight-normal line__height-26 mb-25 pr-20 pr-xs-0">
+
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-12 col-lg-6">
+                <div class="text-center text-lg-left">
+                    <div class="text-center text-lg-left">
+                        <h1 class="font__family-montserrat font__weight-light text-uppercase font__size-18 text-blue brk-library-rendered"
+                            data-brk-library="component__title">刷题能够让你</h1>
+                        <h3 class="font__family-roboto font__weight-thin line__height-52 font__size-46 text-uppercase letter-spacing-60 mt-20 brk-library-rendered"
+                            data-brk-library="component__title">迅速的提升编程能力</h3>
+                        <h2 class="font__family-roboto font__weight-normal line__height-52 font__size-46 text-uppercase letter-spacing-60 brk-library-rendered"
+                            data-brk-library="component__title">冲！</h2>
+                        <hr class="divider wow zoomIn ml-md-0 brk-library-rendered" data-brk-library="component__title"
+                            style="visibility: visible; animation-name: zoomIn;">
+                    </div>
+                    <p class="brk-dark-font-color font__size-16 font__weight-normal line__height-26 pt-10">
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="bg__style overflow-hid position-relative" style="background-image: url();">
+        <div class="container pl-0 pr-0">
+            <div class="row no-gutters wave-hover rendered" data-wh-speed="0.4" data-wh-repeat="false"
+                 data-wh-delay="3">
+                <div class="col-md-6 col-lg-4">
+                    <div class="info-box__wrapper-web wpb_column wave-hover-elem brk-library-rendered"
+                         data-brk-library="component__info_box">
+                        <div class="shape">
+                            <span class="before"></span>
+                            <div class="svg-wrap">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     viewBox="0 0 60 60">
+                                    <path fill="none" stroke="#F39C12" stroke-width="2" stroke-linecap="square"
+                                          stroke-miterlimit="10"
+                                          d="M20.15,34.19L29.34,25c0,0,1.41,0,3.54,2.12S35,30.66,35,30.66l-9.19,9.19"></path>
+                                    <path fill="none" stroke="#34495E" stroke-width="2" stroke-linecap="square"
+                                          stroke-miterlimit="10"
+                                          d="M-1.06,66.72l-5.66-5.66l26.87-26.87c0,0,1.41,0,3.54,2.12s2.12,3.54,2.12,3.54L-1.06,66.72z"></path>
+                                    <path fill="none" stroke="#34495E" stroke-width="2" stroke-linecap="square"
+                                          stroke-miterlimit="10"
+                                          d="M20.15,34.19L29.34,25c0,0,1.41,0,3.54,2.12S35,30.66,35,30.66l-9.19,9.19"></path>
+                                    <path fill="none" stroke="#34495E" stroke-width="2" stroke-linecap="square"
+                                          stroke-miterlimit="10"
+                                          d="M-1.06,66.72l-5.66-5.66l26.87-26.87c0,0,1.41,0,3.54,2.12s2.12,3.54,2.12,3.54L-1.06,66.72z"></path>
+                                    <path fill="none" stroke="#F9BF3B" stroke-width="2" stroke-linecap="square"
+                                          stroke-miterlimit="10"
+                                          d="M16,22c0,0-0.4-1.2-1.6-2.4C13.2,18.4,12,18,12,18s1.2-0.4,2.4-1.6C15.6,15.2,16,14,16,14s0.4,1.2,1.6,2.4C18.8,17.6,20,18,20,18s-1.2,0.4-2.4,1.6C16.4,20.8,16,22,16,22z"></path>
+                                    <path fill="none" stroke="#F9BF3B" stroke-width="2" stroke-linecap="square"
+                                          stroke-miterlimit="10"
+                                          d="M30,9c0,0-0.1-0.3-0.4-0.6C29.3,8.1,29,8,29,8s0.3-0.1,0.6-0.4C29.9,7.3,30,7,30,7s0.1,0.3,0.4,0.6C30.7,7.9,31,8,31,8s-0.3,0.1-0.6,0.4C30.1,8.7,30,9,30,9z"></path>
+                                    <path fill="none" stroke="#F9BF3B" stroke-width="2" stroke-linecap="square"
+                                          stroke-miterlimit="10"
+                                          d="M44,22c0,0-0.6-1.8-2.4-3.6C39.8,16.6,38,16,38,16s1.8-0.6,3.6-2.4C43.4,11.8,44,10,44,10s0.6,1.8,2.4,3.6C48.2,15.4,50,16,50,16s-1.8,0.6-3.6,2.4C44.6,20.2,44,22,44,22z"></path>
+                                    <path fill="none" stroke="#F9BF3B" stroke-width="2" stroke-linecap="square"
+                                          stroke-miterlimit="10"
+                                          d="M52,31c0,0-0.1-0.3-0.4-0.6C51.3,30.1,51,30,51,30s0.3-0.1,0.6-0.4C51.9,29.3,52,29,52,29s0.1,0.3,0.4,0.6C52.7,29.9,53,30,53,30s-0.3,0.1-0.6,0.4C52.1,30.7,52,31,52,31z"></path>
+                                    <path fill="none" stroke="#F9BF3B" stroke-width="2" stroke-linecap="square"
+                                          stroke-miterlimit="10"
+                                          d="M42,48c0,0-0.4-1.2-1.6-2.4C39.2,44.4,38,44,38,44s1.2-0.4,2.4-1.6C41.6,41.2,42,40,42,40s0.4,1.2,1.6,2.4C44.8,43.6,46,44,46,44s-1.2,0.4-2.4,1.6C42.4,46.8,42,48,42,48z"></path>
+                                </svg>
+                            </div>
+                            <span class="after"></span>
+                        </div>
+                        <div class="content">
+                            <h3 class="font__family-montserrat font__weight-semibold font__size-28">版权所有</h3>
+                            <p class="font__family-open-sans font__size-14">一切版权归java小组所有</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="info-box__wrapper-web wpb_column wave-hover-elem brk-library-rendered"
+                         data-brk-library="component__info_box">
+                        <div class="shape">
+                            <span class="before"></span>
+                            <div class="svg-wrap">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     viewBox="0 0 60 60">
+                                    <path fill="none" stroke="#9CAAB9" stroke-width="2" stroke-linecap="square"
+                                          stroke-miterlimit="10"
+                                          d="M42,31h1.43l0.35,2.94l2.65,1.1L49,33l2,2l-2.04,2.56l1.1,2.65L53,40.57v2.87l-2.94,0.35l-1.1,2.65L51,49l-2,2l-2.56-2.04l-2.65,1.1L43.43,53h-2.87l-0.35-2.94l-2.65-1.1L35,51l-2-2l2.04-2.56l-1.1-2.65L31,43.43v-2.87l2.94-0.35l1.1-2.65L33,35l2-2l2.56,2.04l2.65-1.1L40.57,31H42zM42,39c-1.66,0-3,1.34-3,3c0,1.66,1.34,3,3,3c1.66,0,3-1.34,3-3C45,40.34,43.66,39,42,39z"></path>
+                                    <path fill="none" stroke="#95A5A6" stroke-width="2" stroke-linecap="square"
+                                          stroke-miterlimit="10"
+                                          d="M23,7h1.04l1.01,4.31l2.02,0.54l3.03-3.23l1.81,1.04l-1.28,4.23l1.48,1.48l4.23-1.28l1.05,1.81l-3.22,3.03l0.54,2.02L39,21.96l0,2.08l-4.31,1.01l-0.54,2.02l3.22,3.03l-1.04,1.81l-4.23-1.28l-1.48,1.48l1.28,4.23l-1.81,1.05l-3.03-3.23l-2.02,0.54L24.04,39l-2.09,0l-1.01-4.31l-2.02-0.54l-3.02,3.23l-1.81-1.04l1.28-4.23l-1.48-1.48L9.66,31.9L8.62,30.1l3.23-3.03l-0.54-2.02L7,24.04l0-2.09l4.31-1.01l0.54-2.02L8.62,15.9l1.04-1.81l4.24,1.28l1.48-1.48L14.1,9.66l1.81-1.04l3.03,3.23l2.02-0.54L21.96,7H23zM23,17c-3.31,0-6,2.68-6,6c0,3.31,2.68,6,6,6c3.31,0,6-2.69,6-6C29,19.68,26.31,17,23,17z"></path>
+                                </svg>
+                            </div>
+                            <span class="after"></span>
+                        </div>
+                        <div class="content">
+                            <h3 class="font__family-montserrat font__weight-semibold font__size-28">协作开发</h3>
+                            <p class="font__family-open-sans font__size-14">
+                                GitHub地址：https://github.com/istarwyh/Online-Judge</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="info-box__wrapper-web wpb_column wave-hover-elem brk-library-rendered"
+                         data-brk-library="component__info_box">
+                        <div class="shape">
+                            <span class="before"></span>
+                            <div class="svg-wrap">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     viewBox="0 0 60 60">
+                                    <path fill="none" stroke="#34495E" stroke-width="2" stroke-linecap="square"
+                                          stroke-miterlimit="10" d="M52.97,28.91C52.99,29.27,53,29.63,53,30"></path>
+                                    <path fill="none" stroke="#34495E" stroke-width="2" stroke-linecap="square"
+                                          stroke-miterlimit="10" d="M51.55,21.96c0.26,0.7,0.48,1.4,0.67,2.11"></path>
+                                    <path fill="none" stroke="#34495E" stroke-width="2" stroke-linecap="square"
+                                          stroke-miterlimit="10" d="M46.84,14.33c0.78,0.83,1.49,1.73,2.14,2.67"></path>
+                                    <path fill="none" stroke="#34495E" stroke-width="2" stroke-linecap="square"
+                                          stroke-miterlimit="10"
+                                          d="M49.8,42.19C45.75,48.75,38.27,53,30,53C17.3,53,7,42.7,7,30C7,17.3,17.3,7,30,7c4.17,0,8.22,1.11,11.78,3.24"></path>
+                                    <polyline fill="none" stroke="#34495E" stroke-width="2" stroke-linecap="square"
+                                              stroke-miterlimit="10" points="43,41 51,41 51,49"></polyline>
+                                    <line fill="none" stroke="#34495E" stroke-width="2" stroke-linecap="square"
+                                          stroke-miterlimit="10" x1="30" y1="31" x2="41" y2="24"></line>
+                                    <line fill="none" stroke="#34495E" stroke-width="2" stroke-linecap="square"
+                                          stroke-miterlimit="10" x1="30" y1="31" x2="18" y2="19"></line>
+                                    <path fill="none" stroke="#34495E" stroke-width="3" stroke-linecap="square"
+                                          stroke-miterlimit="10" d="M52.97,28.91C52.99,29.27,53,29.63,53,30"></path>
+                                    <path fill="none" stroke="#34495E" stroke-width="3" stroke-linecap="square"
+                                          stroke-miterlimit="10" d="M51.55,21.96c0.26,0.7,0.48,1.4,0.67,2.11"></path>
+                                    <path fill="none" stroke="#34495E" stroke-width="3" stroke-linecap="square"
+                                          stroke-miterlimit="10" d="M46.84,14.33c0.78,0.83,1.49,1.73,2.14,2.67"></path>
+                                    <path fill="none" stroke="#34495E" stroke-width="3" stroke-linecap="square"
+                                          stroke-miterlimit="10"
+                                          d="M49.8,42.19C45.75,48.75,38.27,53,30,53C17.3,53,7,42.7,7,30C7,17.3,17.3,7,30,7c4.17,0,8.22,1.11,11.78,3.24"></path>
+                                    <polyline fill="none" stroke="#34495E" stroke-width="3" stroke-linecap="square"
+                                              stroke-miterlimit="10" points="43,41 51,41 51,49"></polyline>
+                                    <line fill="none" stroke="#34495E" stroke-width="3" stroke-linecap="square"
+                                          stroke-miterlimit="10" x1="30" y1="31" x2="41" y2="24"></line>
+                                    <line fill="none" stroke="#34495E" stroke-width="3" stroke-linecap="square"
+                                          stroke-miterlimit="10" x1="30" y1="31" x2="18" y2="19"></line>
+                                </svg>
+                            </div>
+                            <span class="after"></span>
+                        </div>
+                        <div class="content">
+                            <h3 class="font__family-montserrat font__weight-semibold font__size-28">建议邮箱</h3>
+                            <p class="font__family-open-sans font__size-14">huangjiawei@pku.edu.cn</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="brk-abs-bg-overlay brk-base-bg-gradient-50deg opacity-90"></span>
+    </div>
+</section>
+
+</body>
+</html>

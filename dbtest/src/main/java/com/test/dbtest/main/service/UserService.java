@@ -3,6 +3,7 @@ package com.test.dbtest.main.service;
 
 import com.test.dbtest.main.dao.UserDao;
 import com.test.dbtest.main.entity.Problem;
+import com.test.dbtest.main.entity.Result;
 import com.test.dbtest.main.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.expression.spel.ast.NullLiteral;
@@ -15,6 +16,7 @@ import java.io.*;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -34,16 +36,20 @@ public class UserService {
         user.setPassword(password);
         userDao.insert(user);
     }
+    public void addFirstLog(int problemid,String userid,int time){
+        Result result = new Result(problemid,userid,time);
+        userDao.insertResult(result);
+    }
 
     public String findId(String userid){
         return userDao.findId(userid);
     }
 
     public List<Problem> AllProblem(){
-        return userDao.getTitle();
+        return userDao.getProblems();
     }
 
-    public String ProblemContext(int id){
+    public Problem ProblemContext(int id){
         return userDao.getContext(id);
     }
 
@@ -70,7 +76,14 @@ public class UserService {
 
         return "编译成功";
     }
-
+    public List<String> getcontext(int i) throws FileNotFoundException {
+        File problem = new File("./repository/problems/"+i+".txt");
+        Scanner input = new Scanner(problem);
+        List<String> problemContext = new ArrayList<String>();
+        while(input.hasNext())
+            problemContext.add(input.nextLine());
+        return problemContext;
+    }
     public String run(int problemid){
         File folder = new File("./repository/answer");
         try{

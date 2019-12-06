@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -7,7 +7,7 @@
     <!-- SEO Meta Tags -->
     <meta name="description" content="Tivo is a free HTML landing page template built with Bootstrap to help you crate engaging presentations for SaaS apps and convert visitors into users.">
     <!-- Website Title -->
-    <title>Log In - Tivo - SaaS App HTML Landing Page Template</title>
+    <title>登录页面</title>
     
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap&subset=latin-ext" rel="stylesheet">
@@ -71,14 +71,15 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1>Log In</h1>
-                   <p>You don't have a password? Then please <a class="white" href="/user/signup">Sign Up</a></p>
+<!--                   <p>You don't have a password? Then please <a class="white" href="/user/register">Sign Up</a></p>-->
+                   <p>You don't have a password? Then please <a class="white" href="/user/signupPage">Sign Up</a></p>
                     <!-- Sign Up Form -->
                     <div class="form-container">
+
 <!--                        <form action="/user/userLogin" method="post" id="logInForm" data-toggle="validator" data-focus="false">-->
                         <form action="/user/userLogin" method="post" >
                             <div class="form-group">
-<!--                                <input type="email" class="form-control-input" id="lemail" required>-->
-<!--                                <input class="form-control-input" id="lemail"  name="userid" required>-->
+
                                 <input type="text" class="form-control-input" id="lemail" name="userid" required>
 <!--                                <label class="label-control" for="lemail">userid</label>-->
                                 <label class="label-control" for="lemail">userid</label>
@@ -116,5 +117,17 @@
     <script src="../static/js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
     <script src="../static/js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
     <script src="../static/js/scripts.js"></script> <!-- Custom scripts -->
+<!--    <script>-->
+<!--        // window.onload=fuction()-->
+<!--        // {-->
+<!--        // alert(${session.message});-->
+<!--        // alert("我弹窗了");-->
+<!--        // }-->
+
+<!--    </script>-->
+    <script th:inline="javascript">
+        var message = [[${session.message}]];
+        alert(message);
+    </script>
 </body>
 </html>
