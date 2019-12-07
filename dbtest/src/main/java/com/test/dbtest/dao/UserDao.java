@@ -1,8 +1,8 @@
-package com.test.dbtest.main.dao;
+package com.test.dbtest.dao;
 
-import com.test.dbtest.main.entity.Problem;
-import com.test.dbtest.main.entity.Result;
-import com.test.dbtest.main.entity.User;
+import com.test.dbtest.entity.Problem;
+import com.test.dbtest.entity.Result;
+import com.test.dbtest.entity.User;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.test.dbtest.main.entity;
+package com.test.dbtest.entity;
 
 public class User {
     private String userid;

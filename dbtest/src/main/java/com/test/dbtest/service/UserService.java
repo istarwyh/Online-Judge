@@ -1,14 +1,12 @@
-package com.test.dbtest.main.service;
+package com.test.dbtest.service;
 
 
-import com.test.dbtest.main.dao.UserDao;
-import com.test.dbtest.main.entity.Problem;
-import com.test.dbtest.main.entity.Result;
-import com.test.dbtest.main.entity.User;
+import com.test.dbtest.dao.UserDao;
+import com.test.dbtest.entity.Problem;
+import com.test.dbtest.entity.Result;
+import com.test.dbtest.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.expression.spel.ast.NullLiteral;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.tools.JavaCompiler;
 import javax.tools.ToolProvider;

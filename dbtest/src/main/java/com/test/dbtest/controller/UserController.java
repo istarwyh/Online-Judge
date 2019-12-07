@@ -1,21 +1,17 @@
-package com.test.dbtest.main.controller;
+package com.test.dbtest.controller;
 
-import com.test.dbtest.main.entity.Problem;
-import com.test.dbtest.main.entity.User;
-import com.test.dbtest.main.service.UserService;
+import com.test.dbtest.entity.Problem;
+import com.test.dbtest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
@@ -127,7 +123,7 @@ public class UserController {
             Runtime = System.currentTimeMillis() - startTime;
         }
         else{
-            status= userService.compile(solution);
+            status= "啊,不幸编译错误,检查一下吧";
 //            System.out.println(status);
         }
         ModelAndView modelAndView = new ModelAndView();
