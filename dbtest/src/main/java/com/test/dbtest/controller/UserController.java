@@ -123,7 +123,7 @@ public class UserController {
             Runtime = System.currentTimeMillis() - startTime;
         }
         else{
-            status= "啊,不幸编译错误,检查一下吧";
+            status=userService.compile(solution);
 //            System.out.println(status);
         }
         ModelAndView modelAndView = new ModelAndView();
@@ -133,7 +133,8 @@ public class UserController {
         problem.setProblemcontext(activproblemContext);
         modelAndView.addObject("problem",problem);
         modelAndView.addObject("useranswer",answer);
-        session.setAttribute("message",status+ "\t\n"+"运行时间:" + Runtime+"ms");
+        session.setAttribute("message",status);
+        session.setAttribute("runtime","运行时间:" + Runtime+" ms");
         return modelAndView;
     }
 }

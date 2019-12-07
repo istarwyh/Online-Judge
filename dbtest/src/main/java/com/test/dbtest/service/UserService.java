@@ -60,12 +60,16 @@ public class UserService {
             }else{
                 System.out.println("got it");
             }
+
+            final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+            System.setErr(new PrintStream(outContent));
             int compilationResult = compiler.run(null, null, null, solution.getPath());
             if (compilationResult == 0) {
                 System.out.println("Compilation is successful");
             } else {
                 System.out.println("Compilation Failed");
-                return "编译错误";
+                return "编译错误\n"
+                        + outContent.toString();
             }
         }
         catch (Exception e){
@@ -84,6 +88,9 @@ public class UserService {
     }
     public String run(int problemid) {
         File folder = new File("./repository/answer");
+        final ByteArrayOutputStream outErr = new ByteArrayOutputStream();
+        System.setErr(new PrintStream(outErr));
+
         try {
             URL[] urls = new URL[]{folder.toURI().toURL()};
             URLClassLoader loader = new URLClassLoader(urls);
@@ -108,6 +115,8 @@ public class UserService {
                 System.setIn(new ByteArrayInputStream(data.getBytes()));
                 final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
                 System.setOut(new PrintStream(outContent));
+
+
                 m.invoke(null, (Object) new String[]{});
 
                 File out = new File("./repository/in_out/" + problemid + "/" + i + ".out");
@@ -131,7 +140,7 @@ public class UserService {
             else return "答案错误" ;
         } catch (Exception e) {
             e.printStackTrace();
-            return "运行错误";
+            return "运行错误\n"+outErr.toString().substring(outErr.toString().lastIndexOf("Caused")+10,outErr.toString().length()-10);
         }
     }
 }

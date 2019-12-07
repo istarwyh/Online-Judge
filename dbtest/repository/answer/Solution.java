@@ -10,7 +10,7 @@ public class Solution{
          for(int i=0;i<n;i++){
             nums[i] = input.nextInt();
          }
-        target = input.nextInt()
+        target = input.nextInt();
         int[] t =new int[2]; t = twoSum(nums, target);
         System.out.print("["+t[0]+" ");
         System.out.print(t[1]+"]");
