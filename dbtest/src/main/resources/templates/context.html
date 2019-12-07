@@ -28,13 +28,14 @@
             <div class="panel__list" style="padding: 5%">
                 <!--                <h2 class="font__family-montserrat font__weight-medium font__size-21" style="font-size: 30px" >题目描述：</h2>-->
                 <div th:each="context:${problem.problemcontext}">
-                    <h3 class="font__family-montserrat font__weight-medium font__size-21" th:text="${context}"></h3>
+                    <h3  class="font__family-montserrat font__weight-medium font__size-21"  th:text="${context}"></h3>
                 </div>
 
             </div>
             <form method="POST" action="/user/context/" style="margin-top: 30px">
                 <div th:if="${useranswer} eq null " >
                 <textarea type="text"  name="answer" id="code" class="form-control" >
+import java.util.*;
 public class Solution{
     public static void main(String args[]){
 

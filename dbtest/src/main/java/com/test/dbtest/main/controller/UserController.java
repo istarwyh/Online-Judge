@@ -111,6 +111,7 @@ public class UserController {
     public ModelAndView title(Model model,@RequestParam("answer") String answer, HttpSession session) throws FileNotFoundException {
         String status ="等待判题";
         File solution = new File("./repository/answer/Solution.java");
+
         try{
             Files.write(solution.toPath(), answer.getBytes(StandardCharsets.UTF_8));
             System.out.println("创建成功");
@@ -119,9 +120,11 @@ public class UserController {
             e.printStackTrace();
             System.out.println("创建失败");
         }
-
+        long Runtime = 0;
+        long startTime = System.currentTimeMillis();
         if(userService.compile(solution).equals("编译成功")){
             status= userService.run(pid);
+            Runtime = System.currentTimeMillis() - startTime;
         }
         else{
             status= userService.compile(solution);
@@ -134,7 +137,7 @@ public class UserController {
         problem.setProblemcontext(activproblemContext);
         modelAndView.addObject("problem",problem);
         modelAndView.addObject("useranswer",answer);
-        session.setAttribute("message",status);
+        session.setAttribute("message",status+ "\t\n"+"运行时间:" + Runtime+"ms");
         return modelAndView;
     }
 }

@@ -84,9 +84,9 @@ public class UserService {
             problemContext.add(input.nextLine());
         return problemContext;
     }
-    public String run(int problemid){
+    public String run(int problemid) {
         File folder = new File("./repository/answer");
-        try{
+        try {
             URL[] urls = new URL[]{folder.toURI().toURL()};
             URLClassLoader loader = new URLClassLoader(urls);
             Class c = loader.loadClass("Solution");
@@ -95,11 +95,13 @@ public class UserService {
             File inAndout = new File("./repository/in_out/" + problemid);
             int length = inAndout.listFiles().length;
             int count = 0;
-            for (int i = 1; i <= length / 2; i++){
+
+
+            for (int i = 1; i <= length / 2; i++) {
                 File in = new File("./repository/in_out/" + problemid + "/" + i + ".in");
                 StringBuffer intemp = new StringBuffer();
                 Scanner input = new Scanner(in);
-                while(input.hasNext()){
+                while (input.hasNext()) {
                     String s = input.nextLine();
                     intemp.append(s + "\n");
                 }
@@ -108,12 +110,12 @@ public class UserService {
                 System.setIn(new ByteArrayInputStream(data.getBytes()));
                 final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
                 System.setOut(new PrintStream(outContent));
-                m.invoke(null, (Object)new String[]{});
+                m.invoke(null, (Object) new String[]{});
 
-                File out = new File("./repository/in_out/" + problemid + "/"  + i + ".out");
+                File out = new File("./repository/in_out/" + problemid + "/" + i + ".out");
                 Scanner output = new Scanner(out);
                 StringBuffer outtemp = new StringBuffer();
-                while(output.hasNext()){
+                while (output.hasNext()) {
                     String s = output.nextLine();
                     outtemp.append(s);
                 }
@@ -122,14 +124,14 @@ public class UserService {
                 input.close();
                 output.close();
 
-                if(outContent.toString().trim().equals(answer)) count++;
+                if (outContent.toString().trim().equals(answer)) count++;
                 outContent.close();
 
-                }
-            if(count == length / 2) return "答案正确";
-            else return "答案错误";
-        }
-        catch (Exception e){
+            }
+
+            if (count == length / 2) return "答案正确" ;
+            else return "答案错误" ;
+        } catch (Exception e) {
             e.printStackTrace();
             return "运行错误";
         }
