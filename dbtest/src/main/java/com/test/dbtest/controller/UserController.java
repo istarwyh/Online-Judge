@@ -117,14 +117,14 @@ public class UserController {
             System.out.println("创建失败");
         }
         long Runtime = 0;
-        long startTime = System.currentTimeMillis();
+        long startTime;
         if(userService.compile(solution).equals("编译成功")){
+            startTime = System.currentTimeMillis();
             status= userService.run(pid);
             Runtime = System.currentTimeMillis() - startTime;
         }
         else{
             status=userService.compile(solution);
-//            System.out.println(status);
         }
         ModelAndView modelAndView = new ModelAndView();
         Problem problem = userService.ProblemContext(pid);

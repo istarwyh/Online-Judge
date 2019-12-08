@@ -1,33 +1,27 @@
-import java.util.*;
-public class Solution{
-    public static void main(String[] args){
-		Scanner input = new Scanner(System.in);
-        int n,target;
-    
-         n = input.nextInt();
-         int[] nums = new int [n];
+import java.util.Scanner;
 
-         for(int i=0;i<n;i++){
-            nums[i] = input.nextInt();
-         }
-        target = input.nextInt();
-        int[] t =new int[2]; t = twoSum(nums, target);
-        System.out.print("["+t[0]+" ");
-        System.out.print(t[1]+"]");
-        input.close();
-    }
-  	public static int[] twoSum(int[] nums, int target){
-        int n =nums.length;
-        Map<Integer,Integer> index = new HashMap<>();
-        for (int i=0;i<n;i++){
-            index.put(nums[i],i);
+public class Solution {
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        int len = input.nextInt();
+        int[] nums = new int[len];
+        for (int i = 0; i <len ; i++) {
+            nums[i]=input.nextInt();
         }
-        for(int i=0;i<n;i++){
-            int another = target -nums[i];
-            if(index.containsKey(another) && index.get(another)!= i)
-                return new int[] {i,index.get(another)};
+        int result = nums[0];
+        int times = 1;
+        for (int i = 1; i < nums.length; i++) {
+            if (result == nums[i]) {
+                times++;
+            } else {
+                times--;
+                if (times == 0) {
+                    result = nums[++i];
+                    times++;
+                }
+            }
         }
-        return new int[] {-1,-1};
+        System.out.println(result);
     }
 }
-                
